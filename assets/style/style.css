@@ -1,0 +1,9 @@
+body{   
+    background-image: url(assets/images/Trivia-Graphic.jpg);
+    text-align: center;
+    width: 600px;
+    height: 200px
+}
+.last-seconds{
+    color: red;
+  }
