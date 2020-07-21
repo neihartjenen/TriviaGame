@@ -9,7 +9,7 @@ var myQuestions = [
          "Generation-X",
          "Rugrats"
       ],
-      correctAnswer: "b"
+      correctAnswer: "The Mask"
     },
     {
       question: "I made my family disappear",
@@ -19,7 +19,7 @@ var myQuestions = [
          "The Sandlot",
          "My Girl"
       ],
-      correctAnswer: "a"
+      correctAnswer: "Home Alone"
     },
     {
       question: "What do you mean the game thinks?",
@@ -29,7 +29,7 @@ var myQuestions = [
          "Jumanji",
          "Code Name Kids Next Door"
       ],
-      correctAnswer: "c"
+      correctAnswer: "Jumanji"
     }, 
     {
       question: "Some lady named... Ruth. Baby Ruth", 
@@ -39,15 +39,15 @@ var myQuestions = [
         "Major League",
         "The Sandlot"
       ],
-        correctAnswer:"d"   
+        correctAnswer:"The Sandlot"   
   }
   ],
 
   var timer;
   var game = {
     correct: 0,
-    incorrect: 0,
-    counter: 180
+    wrong: 0,
+    counter: 180,
     countdown: function() {
       game.counter--;
       $("#counter-number").html(game.counter);
@@ -56,7 +56,27 @@ var myQuestions = [
         game.done();
       }
     },
-  
+    
+    start: function() {
+       timer = setInterval(game.countdown, 1000);
+
+       $("#secondary-wrapper").prepend(
+         "<h2>Time Reamining: <span id='counter'>180</span> Seconds</h2>"
+       );
+       
+   $("#start").remove();
+    
+   for (var i = 0; i < myQuestions.length; i++) {
+    card.append("<h2>" + myQuestions[i].question + "</h2>");
+    for (var j = 0; j < myQuestions[i].answers.length; j++) {
+      card.append("<input type='radio' name='question-" + i +
+      "'value='" + myQuestions[i].answers[j] + "''>" + myQuestions[i].answers[j]);
+    }
+  }
+
+  card.append("<button id='submit'>Submit</button>");
+    },
+
   
   
   };
