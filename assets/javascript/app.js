@@ -1,50 +1,62 @@
-function buildQuiz(){}
-submitButton.addEvent('click', showResults);
+var card = $("quiz-area")
 
-buildQuiz(
-const myQuestions = [
+var myQuestions = [
     {
-      question: "Who is Scooby Doo?",
-      answers: {
-        a: "A Cat",
-        b: "A Dog",
-        c: "What are you doing?"
-      },
+      question: "Our love is like a red, red rose... and I am a little thorny.",
+      answers: [
+         "Barb Wire",
+         "The Mask",
+         "Generation-X",
+         "Rugrats"
+      ],
       correctAnswer: "b"
     },
     {
-      question: "What was a show featuring three friends?",
-      answers: {
-        a: "Ed, Edd and Eddy",
-        b: "Rocket Power",
-        c: "Futurama"
-      },
+      question: "I made my family disappear",
+      answers: [
+         "Home Alone",
+         "Rocket Power",
+         "The Sandlot",
+         "My Girl"
+      ],
       correctAnswer: "a"
     },
     {
-      question: "What movie did Simba die in?",
-      answers: {
-        a: "Lion King",
-        b: "Aladian",
-        c: "Rugrats",
-        d: "Code Name Kids Next Door"
-      },
-      correctAnswer: "a"
-    }
-    const answers = [];
-    for(letter in currentQuestion.answers)answers.push(
-        `<label>
-          <input type="questions" name="question${questionNumber}" value="${letter}">
-          ${letter} :
-          ${currentQuestion.answers[letter]}
-        </label>`
-      );
-    }
-  ];
-);
+      question: "What do you mean the game thinks?",
+      answers: [
+         "Lion King",
+         "Aladian",
+         "Jumanji",
+         "Code Name Kids Next Door"
+      ],
+      correctAnswer: "c"
+    }, 
+    {
+      question: "Some lady named... Ruth. Baby Ruth", 
+      answers: [
+        "Little Big League",
+        "Benchwarmers",
+        "Major League",
+        "The Sandlot"
+      ],
+        correctAnswer:"d"   
+  }
+  ],
 
-function showResults(){
-    myQuestions.forEach( (currentQuestion, questionNumber)
-    const answerContainer = answerContainers[questionNumber];
-    const selector = "input[name=question${questionNumber}]:checked";
-    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+  var timer;
+  var game = {
+    correct: 0,
+    incorrect: 0,
+    counter: 180
+    countdown: function() {
+      game.counter--;
+      $("#counter-number").html(game.counter);
+      if (game.counter === 0) {
+        console.log("Game Over");
+        game.done();
+      }
+    },
+  
+  
+  
+  };
