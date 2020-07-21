@@ -1,6 +1,6 @@
-var card = $("quiz-area")
+var card = $("quiz-area");
 
-var myQuestions = [
+var testQuestions = [
     {
       question: "Our love is like a red, red rose... and I am a little thorny.",
       answers: [
@@ -40,14 +40,16 @@ var myQuestions = [
         "The Sandlot"
       ],
         correctAnswer:"The Sandlot"   
-  }
-  ],
+    }
+  ];
 
   var timer;
+    
   var game = {
     correct: 0,
     wrong: 0,
     counter: 180,
+
     countdown: function() {
       game.counter--;
       $("#counter-number").html(game.counter);
@@ -61,22 +63,53 @@ var myQuestions = [
        timer = setInterval(game.countdown, 1000);
 
        $("#secondary-wrapper").prepend(
-         "<h2>Time Reamining: <span id='counter'>180</span> Seconds</h2>"
+         "<h2>Time Remaining: <span id='counter-number'>180</span> Seconds</h2>"
        );
        
    $("#start").remove();
     
-   for (var i = 0; i < myQuestions.length; i++) {
-    card.append("<h2>" + myQuestions[i].question + "</h2>");
-    for (var j = 0; j < myQuestions[i].answers.length; j++) {
+   for (var i = 0; i < testQuestions.length; i++) {
+    card.append("<h2>" + testQuestions[i].question + "</h2>");
+    for (var j = 0; j < testQuestions[i].answers.length; j++) {
       card.append("<input type='radio' name='question-" + i +
-      "'value='" + myQuestions[i].answers[j] + "''>" + myQuestions[i].answers[j]);
+        "'value='" + testQuestions[i].answers[j] + "''>" + testQuestions[i].answers[j]);
     }
   }
 
   card.append("<button id='submit'>Submit</button>");
     },
 
+    
+  done: function() {
+  var inputs = card.children("input:checked");
+    for (var i = 0; i < inputs.length; i++) {
+      if ($(inputs[i]).val() === myQuestions[i].correctAnswer) {
+        game.correct++;
+        } else {
+          game.incorrect++;
+        }
+      }
+      this.result();
+    },
   
+    result: function() {
+      clearInterval(timer);
+  
+      $("#secondary-wrapper h2").remove();
+  
+      card.html("<h2>All Done!</h2>");
+      card.append("<h3>Correct Answers: " + this.correct + "</h3>");
+      card.append("<h3>Incorrect Answers: " + this.incorrect + "</h3>");
+    }
   
   };
+ 
+
+$(document).on("click", "#start", function() {
+  game.start();
+});
+  
+$(document).on("click", "#done", function() {
+  game.done();
+});
+  
