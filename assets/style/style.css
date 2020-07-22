@@ -1,9 +1,39 @@
-body{   
-    background-image: url(assets/images/Trivia-Graphic.jpg);
-    text-align: center;
-    width: 600px;
-    height: 200px
+html,
+body {
+  height: 100%;
 }
-.last-seconds{
-    color: red;
+
+body {
+  text-align: center;
+  background-image: url("../images/Trivia.jpg");
+}
+
+#wrapper {
+  width: 960px;
+  min-height: 80%;
+  box-sizing: border-box;
+  padding: 5% 0;
+  margin: 5% auto;
+  background-color: rgba(204, 171, 25, 0.952);
+}
+
+button {
+    display: block;
+    width: 300px;
+    height: 70px;
+    margin: 10px auto 0;
+    font-size: 42px;
+    border: 0;
+  }
+  
+  h1 {
+    margin-bottom: 50px;
+    font-size: 6.5em;
+    font-weight: bold;
+    color: rgb(255, 66, 66);
+  }
+  #start {
+    margin-top: 10%;
+    background: rgb(255, 255, 255);
+    border: 4px solid rgb(255, 80, 80);
   }
